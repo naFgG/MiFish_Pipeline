@@ -1,0 +1,9 @@
+# primer: primers no. used
+# for multiprimer mixed in one sample, using mix as signal
+# samples: samples used the corresponding primer, multisamples would be delimited by ',', e.g, s1,s2...,sn
+# F: forward primer sequence
+# for multiprimer, primers would be delimited by ','
+# R: reverse primer sequence
+# primer, samples, F, R should delimited by tab
+primer	sample	F	R
+mix	MD1,MD2,MD3,MD4,MD5,MD6,MD7,MD8,ME1,ME2,ME3,ME4,ME5,ME6,ME7,ME8	NNNNNNGTCGGTAAAACTCGTGCCAGC,NNNNNNRGTTGGTAAATCTCGTGCCAGC,NNNNNNGCCGGTAAAACTCGTGCCAGC	NNNNNNCATAGTGGGGTATCTAATCCCAGTTTG,NNNNNNGCATAGTGGGGTATCTAATCCTAGTTTG,NNNNNNCATAGGAGGGTGTCTAATCCCCGTTTG
