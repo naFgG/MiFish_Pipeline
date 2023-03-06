@@ -300,8 +300,12 @@ def featuring(fq):
             otu_table = pd.read_table(f'{fq}_zotu.xls', sep='\t')
         if args.feature:
             otu_table = pd.read_table(f'{fq}_otu.xls', sep='\t')
+        if len(otu_table.columns) > 2:
+            otu_table['sum'] = otu_table.iloc[:, 1:].sum(1)
+            otu_table = otu_table[['#OTU_ID', 'sum']]
+            otu_table.rename(columns={'sum': f'{fq}'}, inplace=True)
         otu_aln = pd.read_table(f'{fq}_aln.xls', sep='\t')
-        otu_aln = otu_aln[otu_aln['evalue'] < 0.01]
+        otu_aln = otu_aln[otu_aln['evalue'] < 0.00001]
         otu_aln = otu_aln.iloc[:, : 3]
         otu_aln.rename(columns={'query id': '#OTU_ID', 'subject id': 'taxonomy'}, inplace=True)
         otu_aln.sort_values(by='% identity', ascending=False, inplace=True)
