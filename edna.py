@@ -300,6 +300,9 @@ def featuring(fq):
             otu_table = pd.read_table(f'{fq}_zotu.xls', sep='\t')
         if args.feature:
             otu_table = pd.read_table(f'{fq}_otu.xls', sep='\t')
+        otu_table.rename(columns={'#OTU_ID': 'first'}, inplace=True)
+        otu_table.reset_index(inplace=True)
+        otu_table.rename(columns={'index': '#OTU_ID'}, inplace=True)
         if len(otu_table.columns) > 2:
             otu_table['sum'] = otu_table.iloc[:, 1:].sum(1)
             otu_table = otu_table[['#OTU_ID', 'sum']]
