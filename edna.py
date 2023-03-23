@@ -300,9 +300,9 @@ def featuring(fq):
             otu_table = pd.read_table(f'{fq}_zotu.xls', sep='\t')
         if args.feature:
             otu_table = pd.read_table(f'{fq}_otu.xls', sep='\t')
-        otu_table.rename(columns={'#OTU_ID': 'first'}, inplace=True)
-        otu_table.reset_index(inplace=True)
-        otu_table.rename(columns={'index': '#OTU_ID'}, inplace=True)
+       # otu_table.rename(columns={'#OTU_ID': 'first'}, inplace=True)
+       # otu_table.reset_index(inplace=True)
+       # otu_table.rename(columns={'index': '#OTU_ID'}, inplace=True)
         if len(otu_table.columns) > 2:
             otu_table['sum'] = otu_table.iloc[:, 1:].sum(1)
             otu_table = otu_table[['#OTU_ID', 'sum']]
@@ -339,7 +339,7 @@ if __name__ == '__main__':
     submit = os.getcwd()
     primer = pd.read_table(args.primer, sep='\t', header=0, comment='#', converters={'primer': str})
     samplefq = [j for i in primer['sample'] for j in i.split(',')]
-    tax = pd.read_table('/mnt/disk2/Lab_Users/fangong/edna_programs/mitofish/taxonomy.txt')
+    tax = pd.read_table('/mnt/disk2/Lab_Users/fangong/edna_programs/mitofish_v3.87/taxonomy.txt')
 
     if args.raw:
         os.popen('mkdir unzipped')
