@@ -308,7 +308,8 @@ def featuring(fq):
             otu_table = otu_table[['#OTU_ID', 'sum']]
             otu_table.rename(columns={'sum': f'{fq}'}, inplace=True)
         otu_aln = pd.read_table(f'{fq}_aln.xls', sep='\t')
-        otu_aln = otu_aln[otu_aln['evalue'] < 0.00001]
+        otu_aln = otu_aln[otu_aln['evalue'] < 1e-10]
+        otu_aln = otu_aln[otu_aln['alignment length'] > 150]
         otu_aln = otu_aln.iloc[:, : 3]
         otu_aln.rename(columns={'query id': '#OTU_ID', 'subject id': 'taxonomy'}, inplace=True)
         otu_aln.sort_values(by='% identity', ascending=False, inplace=True)
@@ -334,7 +335,7 @@ if __name__ == '__main__':
     flash = '/mnt/disk2/Lab_Users/fangong/edna_programs/FLASH-1.2.11/flash'
     usearch = '/mnt/disk2/Lab_Users/fangong/edna_programs/usearch11/usearch11'
     # makeblastdb -in complete_partial_mitogenomes.fa -dbtype nucl -parse_seqids -out mitofish
-    mitofish = '/mnt/disk2/Lab_Users/fangong/edna_programs/mitofish/mitofish'
+    mitofish = '/mnt/disk2/Lab_Users/fangong/edna_programs/mitofish_v3.87/mitofish_v3_87'
     submit = os.getcwd()
     primer = pd.read_table(args.primer, sep='\t', header=0, comment='#', converters={'primer': str})
     samplefq = [j for i in primer['sample'] for j in i.split(',')]
