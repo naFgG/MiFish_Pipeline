@@ -1,4 +1,4 @@
-# MiFish_Pipeline
+# Localized MiFish Pipeline
 根据MiFish文章所描述，具现化MiFish Pipeline
 可能会出现与MiFish Pipeline结果不一致的地方
 MiFish Pipeline地址：http://mitofish.aori.u-tokyo.ac.jp/mifish/
